@@ -5,7 +5,7 @@ namespace Workio.Persistence.Repository;
 
 public interface IRepository<T> where T : BaseEntity
 {
-    IQueryable<T?> GetQueryable();
+    IQueryable<T> GetQueryable();
     Task<List<T?>> GetListAsync(Expression<Func<T?, bool>>? predicate = null,
         Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,
         Func<IQueryable<T>, IQueryable<T>>? includeProperties = null,

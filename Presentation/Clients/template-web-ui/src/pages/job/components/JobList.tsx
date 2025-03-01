@@ -5,8 +5,8 @@ interface JobListProps {
   filters: {
     category: string;
     location: string;
-    price: string;
-    sector: string;
+    min: string;
+    max: string;
   };
 }
 
@@ -57,19 +57,20 @@ const JobList: React.FC<JobListProps> = ({ filters }) => {
   const [jobs, setJobs] = useState(fakeJobs);
 
   useEffect(() => {
+    console.log(filters);
     const filteredJobs = fakeJobs.filter(
       (job) =>
         (!filters.category ||
           job.title.toLowerCase().includes(filters.category.toLowerCase())) &&
         (!filters.location || job.location === filters.location) &&
-        (!filters.price || job.price === filters.price) &&
-        (!filters.sector || job.sector === filters.sector)
+        (!filters.min || job.price >= filters.min) &&
+        (!filters.max || job.price <= filters.max)
     );
     setJobs(filteredJobs);
   }, [filters]);
 
   return (
-    <div>
+    <div style={{ marginTop: "120px" }}>
       {jobs.length > 0 ? (
         jobs.map((job) => <JobCard key={job.id} job={job} />)
       ) : (

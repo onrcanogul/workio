@@ -16,6 +16,6 @@ public class Job : BaseEntity
     public Guid CategoryId { get; set; }
 
     public User? User { get; set; }
-    public Category.Category? Category { get; set; }
+    public Category.Category Category { get; set; }
     public List<Application.Application> Applications { get; set; } = new();
 }

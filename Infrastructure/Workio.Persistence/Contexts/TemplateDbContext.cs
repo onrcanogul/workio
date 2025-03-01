@@ -34,7 +34,18 @@ public class WorkioDbContext(DbContextOptions<WorkioDbContext> options, IHttpCon
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+        
+        modelBuilder.Entity<Job>()
+            .HasOne(j => j.Category)
+            .WithMany(c => c.Jobs)
+            .HasForeignKey(j => j.CategoryId);
+        
         modelBuilder.Entity<Product>().HasQueryFilter(p => !p.IsDeleted);
+        modelBuilder.Entity<Category>().HasQueryFilter(p => !p.IsDeleted);
+        modelBuilder.Entity<Application>().HasQueryFilter(p => !p.IsDeleted);
+        modelBuilder.Entity<Job>().HasQueryFilter(p => !p.IsDeleted);
+        modelBuilder.Entity<Payment>().HasQueryFilter(p => !p.IsDeleted);
+        modelBuilder.Entity<Review>().HasQueryFilter(p => !p.IsDeleted);
     }
 
     private void AuditingEntities()

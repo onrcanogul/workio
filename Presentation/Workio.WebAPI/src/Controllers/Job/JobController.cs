@@ -12,6 +12,10 @@ public class JobController(IJobService service) : BaseController
     public async Task<IActionResult> Get()
         => ApiResult(await service.GetListAsync());
 
+    [HttpPost("filter")]
+    public async Task<IActionResult> GetFilter([FromBody] FilterJobDto model)
+        => ApiResult(await service.Filter(model));
+
     [HttpPost]
     public async Task<IActionResult> Create(JobDto model)
         => ApiResult(await service.CreateAsync(model));

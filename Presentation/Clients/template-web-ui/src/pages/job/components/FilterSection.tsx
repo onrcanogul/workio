@@ -1,50 +1,34 @@
 import React from "react";
-import { Form, Dropdown } from "semantic-ui-react";
+import { Form, Dropdown, Input } from "semantic-ui-react";
+import { TurkeyCitiesFilter } from "../../../domain/common/cities";
 
 interface FilterSectionProps {
   filters: {
     category: string;
     location: string;
-    price: string;
-    sector: string;
+    min: string;
+    max: string;
   };
   setFilters: (filters: {
     category: string;
     location: string;
-    price: string;
-    sector: string;
+    min: string;
+    max: string;
   }) => void;
+  queryCategory: string;
+  categoryOptions: { key; text; value }[];
 }
 
 const FilterSection: React.FC<FilterSectionProps> = ({
   filters,
   setFilters,
+  queryCategory,
+  categoryOptions,
 }) => {
-  const categoryOptions = [
-    { key: "dev", text: "Developer", value: "developer" },
-    { key: "des", text: "Designer", value: "designer" },
-  ];
-
-  const locationOptions = [
-    { key: "ny", text: "New York", value: "new_york" },
-    { key: "sf", text: "San Francisco", value: "san_francisco" },
-  ];
-
-  const priceOptions = [
-    { key: "low", text: "$0 - $50k", value: "low" },
-    { key: "mid", text: "$50k - $100k", value: "mid" },
-    { key: "high", text: "$100k+", value: "high" },
-  ];
-
-  const sectorOptions = [
-    { key: "it", text: "IT", value: "it" },
-    { key: "finance", text: "Finance", value: "finance" },
-  ];
-
   return (
     <Form
       style={{
-        marginTop: "100px",
+        marginTop: "120px",
         display: "flex",
         justifyContent: "center",
         flexDirection: "column",
@@ -54,23 +38,24 @@ const FilterSection: React.FC<FilterSectionProps> = ({
       <Form.Field>
         <label>Category</label>
         <Dropdown
-          placeholder="Select Category"
           fluid
           selection
+          search
           options={categoryOptions}
           value={filters.category}
-          onChange={(_, data) =>
-            setFilters({ ...filters, category: data.value as string })
-          }
+          onChange={(_, data) => {
+            console.log(data.value);
+            setFilters({ ...filters, category: data.value as string });
+          }}
         />
       </Form.Field>
       <Form.Field>
         <label>Location</label>
         <Dropdown
-          placeholder="Select Location"
           fluid
           selection
-          options={locationOptions}
+          search
+          options={TurkeyCitiesFilter}
           value={filters.location}
           onChange={(_, data) =>
             setFilters({ ...filters, location: data.value as string })
@@ -79,27 +64,24 @@ const FilterSection: React.FC<FilterSectionProps> = ({
       </Form.Field>
       <Form.Field>
         <label>Salary Range</label>
-        <Dropdown
-          placeholder="Select Salary Range"
+        <Input
+          placeholder="Min"
           fluid
+          type="number"
           selection
-          options={priceOptions}
-          value={filters.price}
+          value={filters.min}
           onChange={(_, data) =>
-            setFilters({ ...filters, price: data.value as string })
+            setFilters({ ...filters, min: data.value as string })
           }
         />
-      </Form.Field>
-      <Form.Field>
-        <label>Sector</label>
-        <Dropdown
-          placeholder="Select Sector"
+        <Input
+          placeholder="Max"
+          type="number"
           fluid
           selection
-          options={sectorOptions}
-          value={filters.sector}
+          value={filters.max}
           onChange={(_, data) =>
-            setFilters({ ...filters, sector: data.value as string })
+            setFilters({ ...filters, max: data.value as string })
           }
         />
       </Form.Field>

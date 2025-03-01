@@ -3,16 +3,13 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { motion } from "framer-motion";
-import { Card, CardMedia, CardContent, Typography, Box } from "@mui/material";
-import { useTranslation } from "react-i18next";
+import { Card, CardMedia, CardContent, Typography } from "@mui/material";
+import { Category } from "../../../domain/category";
+import { useNavigate } from "react-router-dom";
 
-const categories = [
-  { name: "Technology", image: "https://picsum.photos/400/300?random=1" },
-  { name: "Health", image: "https://picsum.photos/400/300?random=2" },
-  { name: "Finance", image: "https://picsum.photos/400/300?random=3" },
-  { name: "Sports", image: "https://picsum.photos/400/300?random=4" },
-  { name: "Travel", image: "https://picsum.photos/400/300?random=5" },
-];
+interface CategorySlideProps {
+  categories: Category[];
+}
 
 const sliderSettings = {
   dots: false,
@@ -29,15 +26,22 @@ const sliderSettings = {
   ],
 };
 
-const CategorySlide: React.FC = () => {
-  const { t } = useTranslation();
+const CategorySlide: React.FC<CategorySlideProps> = ({ categories }) => {
+  const navigate = useNavigate();
   return (
-    <div style={{ width: "100%", margin: "auto", padding: "40px 0" }}>
-      <Box textAlign={"center"} mb={3} mt={3}>
+    <div
+      style={{
+        width: "100%",
+        margin: "auto",
+        padding: "40px 0",
+        marginTop: "50px",
+      }}
+    >
+      {/* <Box textAlign={"center"} mb={3} mt={3}>
         <Typography variant="h4" fontWeight="bold" color="#4C585B">
           {t("categories")}
         </Typography>
-      </Box>
+      </Box> */}
       <Slider {...sliderSettings}>
         {categories.map((category, index) => (
           <motion.div
@@ -57,12 +61,17 @@ const CategorySlide: React.FC = () => {
               <CardMedia
                 component="img"
                 height="250"
-                image={category.image}
+                image={"https://picsum.photos/400/300?random=5"}
                 alt={category.name}
                 sx={{ objectFit: "cover" }}
               />
               <CardContent sx={{ textAlign: "center" }}>
-                <Typography variant="h6" fontWeight="bold">
+                <Typography
+                  variant="h6"
+                  fontWeight="bold"
+                  color="black"
+                  onClick={() => navigate(`/job?category=${category.id}`)}
+                >
                   {category.name}
                 </Typography>
               </CardContent>

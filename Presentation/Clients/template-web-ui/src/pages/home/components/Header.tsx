@@ -8,7 +8,6 @@ import { useTranslation } from "react-i18next";
 const HeaderComponent: React.FC = () => {
   const { t, i18n } = useTranslation();
 
-  // Redux'tan kullanıcı bilgilerini al
   const user = useSelector((state: RootState) => state.auth.user);
   const isAuthenticated = useSelector(
     (state: RootState) => state.auth.isAuthenticated
