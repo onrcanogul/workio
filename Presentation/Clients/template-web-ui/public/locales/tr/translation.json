@@ -26,5 +26,8 @@
   "noAccount": "Bir hesabınız yok mu?",
   "alreadyHaveAccount": "Zaten bir hesabınız var mı?",
 
-  "categories": "Kategoriler"
+  "categories": "Kategoriler",
+  "category": "Kategori",
+  "location": "Lokasyon",
+  "salaryRange": "Bütçe Aralığı"
 }

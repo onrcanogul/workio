@@ -1,0 +1,9 @@
+.job-list {
+  display: flex;
+  flex-wrap: wrap; /* Kartlar ekran daraldıkça alt satıra geçsin */
+  gap: 16px;
+  flex-direction: row; /* Kartlar arasındaki boşluk */
+  justify-content: center; /* Ortaya hizala */
+  align-items: stretch;
+  margin-top: 120px;
+}

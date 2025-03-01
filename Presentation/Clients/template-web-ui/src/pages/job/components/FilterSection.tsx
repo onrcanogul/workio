@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Dropdown, Input } from "semantic-ui-react";
 import { TurkeyCitiesFilter } from "../../../domain/common/cities";
+import { useTranslation } from "react-i18next";
 
 interface FilterSectionProps {
   filters: {
@@ -22,9 +23,10 @@ interface FilterSectionProps {
 const FilterSection: React.FC<FilterSectionProps> = ({
   filters,
   setFilters,
-  queryCategory,
+  // queryCategory,
   categoryOptions,
 }) => {
+  const { t } = useTranslation();
   return (
     <Form
       style={{
@@ -36,7 +38,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
       }}
     >
       <Form.Field>
-        <label>Category</label>
+        <label>{t("category")}</label>
         <Dropdown
           fluid
           selection
@@ -50,7 +52,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
         />
       </Form.Field>
       <Form.Field>
-        <label>Location</label>
+        <label>{t("location")}</label>
         <Dropdown
           fluid
           selection
@@ -63,7 +65,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({
         />
       </Form.Field>
       <Form.Field>
-        <label>Salary Range</label>
+        <label>{t("salaryRange")}</label>
         <Input
           placeholder="Min"
           fluid

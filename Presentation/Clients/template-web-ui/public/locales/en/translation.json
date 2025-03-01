@@ -26,5 +26,8 @@
   "noAccount": "Don't have any accounts ?",
   "alreadyHaveAccount": "Do you already have an account?",
 
-  "categories": "Categories"
+  "categories": "Categories",
+  "category": "Category",
+  "location": "Location",
+  "salaryRange": "Salary Range"
 }

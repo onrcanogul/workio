@@ -6,7 +6,7 @@ import { Category } from "../domain/category";
 export const fetchCategories = createAsyncThunk(
   "categories/fetchCategories",
   async () => {
-    const response = await api.get("/category"); // API URL'ini değiştir
+    const response = await api.get("/category");
     return response.data.data;
   }
 );
