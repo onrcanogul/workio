@@ -1,0 +1,6 @@
+@Workio.WebAPI_HostAddress = http://localhost:5269
+
+GET {{Workio.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
