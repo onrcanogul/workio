@@ -18,16 +18,30 @@ builder.Services.AddSwaggerServices()
     .AddApplicationServices()
     .AddInfrastructureServices(builder.Configuration)
     .AddSerilogServices(builder.Configuration);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        corsPolicyBuilder =>
+        {
+            corsPolicyBuilder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+        });
+});
+
 builder.Host.UseSerilog();
 var app = builder.Build();
+app.UseCors("AllowAll"); 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwaggerMiddleware();
 }
+app.UseCorsServices();
 app.UseLocalizationServices();
 app.UseInfrastructureServices();
-app.UseCorsServices();
 app.UseRateLimiter();
 app.UseHttpsRedirection();
 app.UseRouting();

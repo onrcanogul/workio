@@ -29,5 +29,7 @@
   "categories": "Kategoriler",
   "category": "Kategori",
   "location": "Lokasyon",
-  "salaryRange": "Bütçe Aralığı"
+  "salaryRange": "Bütçe Aralığı",
+  "open": "Açık",
+  "done": "Bitti"
 }

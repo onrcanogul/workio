@@ -9,7 +9,8 @@ public static class Cors
             options.AddPolicy("AllowAll",
                 corsPolicyBuilder =>
                 {
-                    corsPolicyBuilder.AllowAnyOrigin()
+                    corsPolicyBuilder
+                        .AllowAnyOrigin()
                         .AllowAnyMethod()
                         .AllowAnyHeader();
                 });
@@ -19,6 +20,17 @@ public static class Cors
     public static IApplicationBuilder UseCorsServices(this IApplicationBuilder app)
     {
         app.UseCors("AllowAll");
+        app.Use(async (context, next) =>
+        {
+            if (context.Request.Method == "OPTIONS")
+            {
+                context.Response.StatusCode = 200;
+                await context.Response.CompleteAsync();
+                return;
+            }
+            await next();
+        });
+
         return app;
     }
 }

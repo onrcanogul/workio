@@ -3,7 +3,7 @@ import JobCard from "./JobCard";
 import { useAppDispatch } from "../../../hooks";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
-import { fetchJobs } from "../../../features/jobSlice";
+import { fetchJobs, filteredJobs } from "../../../features/jobSlice";
 import BlockUI from "../../../utils/block-ui";
 import "../../../styles/JobList.css";
 
@@ -22,6 +22,7 @@ const JobList: React.FC<JobListProps> = ({ filters }) => {
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    debugger;
     const fetchJobList = async () => {
       setLoading(true);
       if (
@@ -31,6 +32,8 @@ const JobList: React.FC<JobListProps> = ({ filters }) => {
         filters.min === ""
       ) {
         await dispatch(fetchJobs());
+      } else {
+        await dispatch(filteredJobs(filters));
       }
       setLoading(false);
     };

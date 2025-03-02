@@ -29,5 +29,7 @@
   "categories": "Categories",
   "category": "Category",
   "location": "Location",
-  "salaryRange": "Salary Range"
+  "salaryRange": "Salary Range",
+  "open": "Open",
+  "done": "Bitti"
 }

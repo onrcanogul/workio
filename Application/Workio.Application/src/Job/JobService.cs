@@ -17,12 +17,12 @@ public class JobService(IRepository<Domain.Entities.Job.Job> repository, IMapper
 {
     public async Task<ServiceResponse<List<JobDto>>> Filter(FilterJobDto model)
     {
-        var query = repository.GetQueryable().Include(x => x.Category);
-        
-        query.WhereIf(model.CategoryId != Guid.Empty, x => x.Category.Id == model.CategoryId);
-        query.WhereIf(model.Location != string.Empty, x => x.Location.Contains(model.Location));
-        query.WhereIf(model.Min != 0, x => x.Price >= model.Min);
-        query.WhereIf(model.Max != 0, x => x.Price <= model.Max);
+        var query = repository.GetQueryable()
+            .Include(x => x.Category)
+            .WhereIf(model.CategoryId != Guid.Empty, x => x.CategoryId == model.CategoryId)
+            .WhereIf(model.Location != string.Empty, x => x.Location.Contains(model.Location))
+            .WhereIf(model.Min != 0 && model.Min != null, x => x.Price >= model.Min)
+            .WhereIf(model.Max != 0 && model.Max != null, x => x.Price <= model.Max);
         
         var dto = mapper.Map<List<JobDto>>(await query.ToListAsync());
         

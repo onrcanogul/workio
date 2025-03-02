@@ -1,5 +1,5 @@
 .job-card {
-  width: 450px; /* Kart genişliği */
+  width: 450px;
   max-width: 100%;
   background: white;
   border-radius: 12px;
@@ -8,8 +8,8 @@
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* İçerik düzenli dağılsın */
-  min-height: 180px; /* Kartlar aynı hizada kalsın */
+  justify-content: space-between;
+  min-height: 180px;
 }
 
 .job-card:hover {

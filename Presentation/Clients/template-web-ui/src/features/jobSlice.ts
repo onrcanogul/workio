@@ -16,12 +16,17 @@ export const filteredJobs = createAsyncThunk(
     location,
   }: {
     category: string;
-    min: number;
-    max: number;
+    min: string;
+    max: string;
     location: string;
   }) => {
-    const model = { category, min, max, location };
-    const response = await api.post("/jobs", model);
+    const model = {
+      categoryId: category,
+      min: parseInt(min),
+      max: parseInt(max),
+      location,
+    };
+    const response = await api.post("/job/filter", model);
     return response.data.data;
   }
 );

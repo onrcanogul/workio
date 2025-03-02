@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Workio.Application.Abstraction.Job.Dto;
 using Workio.Common.Models.Dtos;
 
@@ -8,5 +9,6 @@ public class CategoryDto : BaseDto
     public string Name { get; set; } = null!;
     public string Description { get; set; } = null!;
     public string? BackgroundImage { get; set; }
+    [JsonIgnore]
     public List<JobDto> Jobs { get; set; } = new();
 }
