@@ -2,12 +2,14 @@ import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./features/authSlice";
 import categoryReducer from "./features/categorySlice";
 import jobReducer from "./features/jobSlice";
+import applicationReducer from "./features/applicationSlice";
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
     category: categoryReducer,
     job: jobReducer,
+    application: applicationReducer,
   },
 });
 

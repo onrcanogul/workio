@@ -3,7 +3,6 @@ import api from "../api/axiosInstance";
 
 export const fetchJobs = createAsyncThunk("jobs/fetchCategories", async () => {
   const response = await api.get("/job");
-  console.log(response.data.data);
   return response.data.data;
 });
 

@@ -46,7 +46,6 @@ const FilterSection: React.FC<FilterSectionProps> = ({
           options={categoryOptions}
           value={filters.category}
           onChange={(_, data) => {
-            console.log(data.value);
             setFilters({ ...filters, category: data.value as string });
           }}
         />
