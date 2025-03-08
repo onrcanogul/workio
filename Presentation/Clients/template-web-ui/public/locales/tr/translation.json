@@ -31,5 +31,12 @@
   "location": "Lokasyon",
   "salaryRange": "Bütçe Aralığı",
   "open": "Açık",
-  "done": "Bitti"
+  "done": "Bitti",
+
+  "jobs": "İşler",
+  "applications": "Başvurular",
+  "jobNotFound": "İş bulunamadı.",
+  "applicationNotFound": "Başvuru bulunamadı.",
+
+  "averageReview": "Ortalama Değerlendirme:"
 }

@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { checkAuth } from "./features/authSlice";
 import { RootState } from "./store";
 import JobListPage from "./pages/job/JobListPage";
+import Profile from "./pages/profile/Profile";
 
 function App() {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/auth" element={<Auth />} />
         <Route path="/job" element={<JobListPage />} />
+        <Route path="/profile/:id" element={<Profile />} />
       </Routes>
     </Router>
   );

@@ -31,5 +31,12 @@
   "location": "Location",
   "salaryRange": "Salary Range",
   "open": "Open",
-  "done": "Bitti"
+  "done": "Done",
+
+  "jobs": "Jobs",
+  "applications": "Applications",
+  "jobNotFound": "Job Not Found.",
+  "applicationNotFound": "Application Not Found.",
+
+  "averageReview": "Average Review:"
 }

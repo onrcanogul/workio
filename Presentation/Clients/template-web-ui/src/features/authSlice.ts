@@ -31,13 +31,11 @@ export const login = createAsyncThunk(
         usernameOrEmail,
         password,
       });
-      debugger;
       localStorage.setItem("accessToken", response.data.data.accessToken);
       localStorage.setItem("refreshToken", response.data.data.refreshToken);
       ToastrService.success(i18n.t("loginSuccess"));
       return response.data.data;
     } catch (error) {
-      console.error("Login error:", error);
       ToastrService.error(i18n.t("loginError"));
       return thunkAPI.rejectWithValue(error.response?.data || "Login failed");
     }

@@ -17,6 +17,19 @@ public class UserService(UserManager<User> service, ITokenHandler tokenHandler, 
     : IUserService
 {
     public string? GetCurrentUsername() => httpContextAccessor.HttpContext?.User.Identity!.Name;
+
+    public async Task<ServiceResponse<UserDto>> GetById(Guid id)
+    {
+        var user = await service.Users
+        .Include(x => x.Applications)
+           .ThenInclude(x => x.Job)
+        .Include(x => x.Jobs)
+            .ThenInclude(x => x.Category)
+        .FirstOrDefaultAsync(x => x.Id == id);
+
+        var dto = mapper.Map<UserDto>(user);
+        return ServiceResponse<UserDto>.Success(dto, StatusCodes.Status200OK);
+    }
     public async Task<ServiceResponse<Token>> Login(LoginDto dto)
     {
         var user = await service.FindByNameAsync(dto.UsernameOrEmail) ?? await service.FindByEmailAsync(dto.UsernameOrEmail)
