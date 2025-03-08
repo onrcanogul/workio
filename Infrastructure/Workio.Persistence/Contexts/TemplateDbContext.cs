@@ -18,8 +18,8 @@ public class WorkioDbContext(DbContextOptions<WorkioDbContext> options, IHttpCon
     public DbSet<Category> Categories { get; set; }
     public DbSet<Job> Jobs { get; set; }
     public DbSet<Payment> Payments { get; set; }
-    public DbSet<Review> Reviews { get; set; }  
-    
+    public DbSet<Review> Reviews { get; set; }
+
     public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
     {
         AuditingEntities();
@@ -34,13 +34,12 @@ public class WorkioDbContext(DbContextOptions<WorkioDbContext> options, IHttpCon
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
-        
+
         modelBuilder.Entity<Job>()
             .HasOne(j => j.Category)
             .WithMany(c => c.Jobs)
             .HasForeignKey(j => j.CategoryId);
-        
-        modelBuilder.Entity<Product>().HasQueryFilter(p => !p.IsDeleted);
+
         modelBuilder.Entity<Category>().HasQueryFilter(p => !p.IsDeleted);
         modelBuilder.Entity<Application>().HasQueryFilter(p => !p.IsDeleted);
         modelBuilder.Entity<Job>().HasQueryFilter(p => !p.IsDeleted);

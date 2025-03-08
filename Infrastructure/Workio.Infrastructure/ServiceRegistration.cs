@@ -29,7 +29,7 @@ public static class ServiceRegistration
                 NameClaimType = ClaimTypes.Name,
             };
         });
-        services.AddExceptionHandler<Workio.Infrastructure.Middlewares.ExceptionHandler>();
+        services.AddExceptionHandler<Middlewares.ExceptionHandler>();
         return services;
     }
 

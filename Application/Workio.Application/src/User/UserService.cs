@@ -23,7 +23,7 @@ public class UserService(UserManager<User> service, ITokenHandler tokenHandler, 
         var user = await service.Users
         .Include(x => x.Applications.OrderByDescending(x => x.CreatedDate))
            .ThenInclude(x => x.Job)
-                .ThenInclude(x => x.User)
+                .ThenInclude(x => x!.User)
         .Include(x => x.Jobs.OrderByDescending(x => x.CreatedDate))
             .ThenInclude(x => x.Category)
         .FirstOrDefaultAsync(x => x.Id == id);
