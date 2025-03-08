@@ -5,6 +5,7 @@ export interface Application extends BaseEntity {
   message: string;
   jobId: string;
   userId: string;
+  status: ApplicationStatus;
   user: any;
   job: Job;
 }

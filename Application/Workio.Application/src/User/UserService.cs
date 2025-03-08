@@ -21,9 +21,10 @@ public class UserService(UserManager<User> service, ITokenHandler tokenHandler, 
     public async Task<ServiceResponse<UserDto>> GetById(Guid id)
     {
         var user = await service.Users
-        .Include(x => x.Applications)
+        .Include(x => x.Applications.OrderByDescending(x => x.CreatedDate))
            .ThenInclude(x => x.Job)
-        .Include(x => x.Jobs)
+                .ThenInclude(x => x.User)
+        .Include(x => x.Jobs.OrderByDescending(x => x.CreatedDate))
             .ThenInclude(x => x.Category)
         .FirstOrDefaultAsync(x => x.Id == id);
 

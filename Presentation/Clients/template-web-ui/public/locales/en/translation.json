@@ -38,5 +38,11 @@
   "jobNotFound": "Job Not Found.",
   "applicationNotFound": "Application Not Found.",
 
-  "averageReview": "Average Review:"
+  "averageReview": "Average Review:",
+
+  "status.Pending": "Pending",
+  "status.Accepted": "Accepted",
+  "status.Rejected": "Rejected",
+
+  "jobOwner": "Job Owner"
 }

@@ -38,5 +38,11 @@
   "jobNotFound": "İş bulunamadı.",
   "applicationNotFound": "Başvuru bulunamadı.",
 
-  "averageReview": "Ortalama Değerlendirme:"
+  "averageReview": "Ortalama Değerlendirme:",
+
+  "status.Pending": "Bekliyor",
+  "status.Accepted": "Kabul Edildi",
+  "status.Rejected": "Reddedildi",
+
+  "jobOwner": "İş Sahibi"
 }
